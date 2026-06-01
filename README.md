@@ -32,3 +32,18 @@ return [
     'channel_id'      => 'YOUR_CHANNEL_ID_HERE'
 ];
 ?>
+
+TEST
+Load your page in a desktop browser. Open the Developer Tools (F12) > Network tab.
+Look for the request made to check_live.php.
+Check the Response Headers. On the first load, you should see X-Source: API-Live.
+
+
+Project Structure
+index.html - The main profile card structure and FontAwesome inclusion.
+style.css - CSS animations and the custom neon effect logic.
+script.js - Client-side polling (every 60s) and mobile/desktop Deep Linking logic.
+check_live.php - The backend core. Handles cURL requests to YouTube, JSON parsing, and atomic file locking.
+config.php - Stores API credentials (keep this secure).
+.htaccess - Apache rules to block public visibility of configuration and cache files.
+Refresh the page. Check the headers again. You should now see X-Source: Cache, confirming that the quota-saving system is active.
